@@ -1,7 +1,10 @@
 import json
 import boto3
 from boto3.dynamodb.conditions import Attr
-
+'''
+This function handles real-time communication between clients by AWS Websockets API Gate
+And using DynamoDB
+'''
 
 def lambda_handler(event, context):
     connectionId = event['requestContext']['connectionId']

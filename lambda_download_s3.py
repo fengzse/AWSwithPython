@@ -1,11 +1,13 @@
 import base64
 import boto3
 
-s3 = boto3.client('s3')
-
-
+'''
+This function is deployed on AWS Lambda
+It handles an RESTful API which provides a filename and download the corresponding file from S3
+'''
 def lambda_handler(event, context):
     print(event)
+    s3 = boto3.client('s3')
     bucket_name = "mydrivestest"
     file_name = event["pathParameters"]["filename"]
 
@@ -21,7 +23,5 @@ def lambda_handler(event, context):
         "body": base64.b64encode(file_content),  # 文件必须先读取再转码然后响应
         "isBase64Encoded": True
     }
-    # return {
-    #     'headers': { "Content-type": "text/html" },
 
 
